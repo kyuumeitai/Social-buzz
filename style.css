@@ -78,6 +78,10 @@ a{
 .link{
 	float: left;
 	}
+	
+h3 .link{
+	float: none;
+	}
 
 .link img{
 	display: block;
@@ -95,6 +99,10 @@ a{
 	margin: 5px;
 	}
 
+.each p{
+	margin: 5px;
+	}
+
 .each li{
 	list-style: none;
 	padding: 5px 5px 5px 24px;
@@ -102,13 +110,23 @@ a{
 	margin: 0;
 	}
 
+.each h3{
+	margin: 5px;
+	font-size: 12px;	
+	}
+
 .each h3 a{
-	font-size: 12px;
 	text-decoration: none;
 	}
 	
 .each h3 a:hover{
 	text-decoration: underline;
+	}
+
+.each .time{
+	font-size: 10px;
+	display: block;
+	margin: 0;	
 	}
 
 .inreplyto{

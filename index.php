@@ -22,6 +22,7 @@ aacuna@multinet.cl
 		<title>Social Buzz</title>
 		<link type="text/css" href="style.css" rel="stylesheet" />
 		<script type="text/javascript" src="libraries/jquery-1.6.4.min.js"></script>
+		<script type="text/javascript" src="libraries/jquery.timeago.js"></script>		
 		<script type="text/javascript">
 <?php 
 /**************************************************************************** 
