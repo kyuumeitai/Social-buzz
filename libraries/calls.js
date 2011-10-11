@@ -146,9 +146,25 @@ return anyo + "-" + mes + "-" + dia + "T" + hora + gmt;
 		}
 		
  	$('#social-buzz-header li a').live('click', function(){
- 		var t = $(this);
- 		var turi = t.attr('rel');
- 		var proxy = 'proxy/caller.php';
+		var t = $(this);
+		var turi = t.attr('rel');
+		var proxy = 'proxy/caller.php';
+ 		ejecutor(turi, proxy);
+ 		return false;
+ 		});
+ 	
+ 	$('#social-buzz .feed').each(function(){
+		var t = $(this);
+		var turi = 'all';
+		var proxy = 'proxy/caller.php';
+ 		ejecutor(turi, proxy);
+ 		});
+ 		
+ 	function ejecutor(turi, proxy){
+		var t = $(this);
+		$('.feed').animate({opacity:0}, 500, function(){
+			$('#social-buzz .preloader').fadeIn('fast');
+			});
  		if(turi == 'facebook' || turi == 'twitter' || turi == 'flickr' || turi == 'youtube'){
  			var ruta  = proxy + '?url=' + encodeURIComponent(uris[turi]) + '&full_headers=1&full_status=1';
 
@@ -165,11 +181,12 @@ return anyo + "-" + mes + "-" + dia + "T" + hora + gmt;
 						});
 					}
 				html += '</ul>';
-
-				$('.feed').animate({opacity:0}, 500, function(){
-					$('.feed').empty().html(html);
-					});
-				$('.feed').animate({opacity:1}, 500);				
+				
+				$('.feed').empty().html(html);
+				$('.feed').animate({opacity:1}, 500);
+				
+				$('#social-buzz .preloader').fadeOut('fast');
+				
 				});
  			}
  			
@@ -198,11 +215,11 @@ return anyo + "-" + mes + "-" + dia + "T" + hora + gmt;
 						$('.feed').empty().html(html+'</ul>');
 						});
 						$('.feed').animate({opacity:1}, 500);
+						$('#social-buzz .preloader').fadeOut('fast');
 					});
 					};
 		 		});		 		
 		 	}
- 		return false;
- 		});
+ 		}
  		
 });

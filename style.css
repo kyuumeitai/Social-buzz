@@ -18,6 +18,7 @@ a{
 	color: #333;
 	font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
 	font-size: 11px;
+	position: relative;
 	}
 
 #social-buzz-header{
@@ -100,7 +101,7 @@ h3 .link{
 	}
 
 .each p{
-	margin: 5px;
+	margin: 0 5px 0;
 	}
 
 .each li{
@@ -110,8 +111,12 @@ h3 .link{
 	margin: 0;
 	}
 
+.each li:hover{
+	background: url(images/bg.png) repeat-x bottom;
+	}
+
 .each h3{
-	margin: 5px;
+	margin: 5px 5px 0;
 	font-size: 12px;	
 	}
 
@@ -126,11 +131,22 @@ h3 .link{
 .each .time{
 	font-size: 10px;
 	display: block;
-	margin: 0;	
+	margin: 0;
+	color: #999999;
 	}
 
 .inreplyto{
 	font-size: 10px;
 	display: block;
 	margin: 0;
+	}
+
+.preloader{
+	position: absolute;
+	width: 30px;
+	height: 30px;	
+	top: 50%;
+	left: 50%;
+	margin-left: -15px;
+	margin-top: -15px;	
 	}

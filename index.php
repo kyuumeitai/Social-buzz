@@ -70,6 +70,7 @@ ya que para esto está el proxy (en proxy/caller.php)
 			<div class="feed clearfix">
 			
 			</div><!-- .feed -->
+			<img class="preloader" src="images/preloader.gif" />
 		</div><!-- #social-buzz -->
 	</body>
 </html>
