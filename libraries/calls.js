@@ -149,6 +149,8 @@ return anyo + "-" + mes + "-" + dia + "T" + hora + gmt;
 		var t = $(this);
 		var turi = t.attr('rel');
 		var proxy = 'proxy/caller.php';
+		t.parent().removeClass('inactive').addClass('active');
+		t.parent().siblings().removeClass('active').addClass('inactive');
  		ejecutor(turi, proxy);
  		return false;
  		});
@@ -209,7 +211,6 @@ return anyo + "-" + mes + "-" + dia + "T" + hora + gmt;
 							html += compositor(i, dt, cada);												
 							});
 						}
-					console.log(html);
 
 					$('.feed').animate({opacity:0}, 500, function(){
 						$('.feed').empty().html(html+'</ul>');
