@@ -126,15 +126,18 @@ return anyo + "-" + mes + "-" + dia + "T" + hora + gmt;
 			var nombre = (typeof(dt.name) != "undefined") ? dt.name : "";
 			var hora = (typeof(dt.created_time) != "undefined") ? dt.created_time : "";
 			salida += '<li class="type-facebook clearfix">';
-			if(foto != ""){
+			if(foto != "" && dt.type != "swf"){
 				salida += (link != "") ? '<a href="' + link + '" class="link" target="_parent"><img src="' + parseImg(foto, turi) + '" /></a>' : '<img src="' + parseImg(foto, turi) + '" />';
+				} else 
+			if(foto != "" && dt.type === "swf"){
+				salida += (link != "") ? '<a href="' + link + '" class="link" target="_parent" style="position: relative;"><img style="max-width: 130px; max-height: 130px;"  src="' + parseImg(foto, turi) + '" /><img src="images/player.png" style="position: absolute; bottom: 15px; left: 10px;" /></a>' : '<img src="' + parseImg(foto, turi) + '" />';				
 				}
 			if(nombre != ""){
 				salida += (link != "") ? '<h3><a href="'+ link +'" class="link" target="_blank">' + nombre + '</a></h3>' : '';	
 				}
 			salida += '<p>' + parseText(msg) + '</p>';
 			salida += '<span class="time">' + $.timeago(hora) + '</span>';
-			salida += '</li>';	
+			salida += '</li>';
 			}
 		else if(turi == 'flickr'){
 			salida += 'flikerr!';
@@ -172,16 +175,17 @@ return anyo + "-" + mes + "-" + dia + "T" + hora + gmt;
 
 	 		$.getJSON(ruta, function(json){
 	 			var html = '<ul class="each">';
-				if(turi == 'twitter'){	
-					$.each(json.contents, function(i,dt){
-						html += compositor(i, dt, turi);
-						});
-					}
-				else if(turi == 'facebook'){
+				if(turi == 'facebook'){
 					$.each(json.contents.data, function(i, dt){
  						html += compositor(i, dt, turi); 
 						});
 					}
+				else if(turi == 'twitter'){	
+					$.each(json.contents, function(i,dt){
+						html += compositor(i, dt, turi);
+						});
+					}
+					
 				html += '</ul>';
 				
 				$('.feed').empty().html(html);
@@ -201,17 +205,16 @@ return anyo + "-" + mes + "-" + dia + "T" + hora + gmt;
 				var indruta  = proxy + '?url=' + encodeURIComponent(valor) + '&full_headers=1&full_status=1';
 				$.getJSON(indruta, function(json){					
 					fids[cada] = json;
-					if(cada == 'twitter'){
-						$.each(json.contents, function(i, dt){
-							html += compositor(i, dt, cada);		
-							});
-						}
-					else if (cada == 'facebook'){
+					if (cada == 'facebook'){
 						$.each(json.contents.data, function(i, dt){
 							html += compositor(i, dt, cada);												
 							});
 						}
-
+					else if(cada == 'twitter'){
+						$.each(json.contents, function(i, dt){
+							html += compositor(i, dt, cada);		
+							});
+						}
 					$('.feed').animate({opacity:0}, 500, function(){
 						$('.feed').empty().html(html+'</ul>');
 						});
