@@ -15,14 +15,12 @@ aacuna@multinet.cl
 *********************************************************************************
 Configuración: Si se desea eliminar un servicio, simplemente debe declararse vacío. 
 
-Hasta el momento hay 4 servicios configurados:
+Hasta el momento hay 2 servicios configurados:
 	- twitter
 	- facebook
-	- flickr
-	- youtube
 
 Si se necesitara extender hay que crear un parser en:
-	libraries/calls.js, línea 14 
+	libraries/calls.js,
 	función compositor()
 para los distintos formatos.
 
