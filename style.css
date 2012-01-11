@@ -79,7 +79,8 @@ a{
 	
 .feed{
 	overflow: auto;
-	height: 334px;
+	overflow-x: hidden;	
+	height: 184px;
 	margin: 0;
 	}
 
