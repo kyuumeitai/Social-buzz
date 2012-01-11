@@ -127,10 +127,10 @@ return anyo + "-" + mes + "-" + dia + "T" + hora + gmt;
 			var hora = (typeof(dt.created_time) != "undefined") ? dt.created_time : "";
 			salida += '<li class="type-facebook clearfix">';
 			if(foto != "" && dt.type != "swf"){
-				salida += (link != "") ? '<a href="' + link + '" class="link" target="_parent"><img src="' + parseImg(foto, turi) + '" /></a>' : '<img src="' + parseImg(foto, turi) + '" />';
+				salida += (link != "") ? '<a href="' + link + '" class="link" target="_parent"><img style="max-width: 100px; max-height: 100px;" src="' + parseImg(foto, turi) + '" /></a>' : '<img style="max-width: 100px; max-height: 100px;" src="' + parseImg(foto, turi) + '" />';
 				} else 
 			if(foto != "" && dt.type === "swf"){
-				salida += (link != "") ? '<a href="' + link + '" class="link" target="_parent" style="position: relative;"><img style="max-width: 130px; max-height: 130px;"  src="' + parseImg(foto, turi) + '" /><img src="images/player.png" style="position: absolute; bottom: 15px; left: 10px;" /></a>' : '<img src="' + parseImg(foto, turi) + '" />';				
+				salida += (link != "") ? '<a href="' + link + '" class="link" target="_parent" style="position: relative;"><img style="max-width: 100px; max-height: 100px;"  src="' + parseImg(foto, turi) + '" /><img src="images/player.png" style="position: absolute; bottom: 15px; left: 10px;" /></a>' : '<img src="' + parseImg(foto, turi) + '" />';				
 				}
 			if(nombre != ""){
 				salida += (link != "") ? '<h3><a href="'+ link +'" class="link" target="_blank">' + nombre + '</a></h3>' : '';	
