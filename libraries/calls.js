@@ -121,6 +121,7 @@ return anyo + "-" + mes + "-" + dia + "T" + hora + gmt;
 			
 		else if(turi == 'facebook'){
 			var msg = (typeof(dt.message) != "undefined") ? dt.message : "";
+			var story = (typeof(dt.story) != "undefined") ? dt.story : "";			
 			var link = (typeof(dt.link) != "undefined") ? dt.link : ""; 
 			var foto = (typeof(dt.picture) != "undefined") ? dt.picture : "";
 			var nombre = (typeof(dt.name) != "undefined") ? dt.name : "";
@@ -135,7 +136,12 @@ return anyo + "-" + mes + "-" + dia + "T" + hora + gmt;
 			if(nombre != ""){
 				salida += (link != "") ? '<h3><a href="'+ link +'" class="link" target="_blank">' + nombre + '</a></h3>' : '';	
 				}
-			salida += '<p>' + parseText(msg) + '</p>';
+			if(msg != ""){
+				salida += '<p>' + parseText(msg) + '</p>';				
+				}
+			else if(story != ""){
+				salida += '<p>' + parseText(story) + '</p>';
+				}
 			salida += '<span class="time">' + $.timeago(hora) + '</span>';
 			salida += '</li>';
 			}
