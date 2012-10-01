@@ -1,6 +1,6 @@
 <?php 
 /********************************************************************************
-Álex Acuña Viera - Multinet 2011.
+Álex Acuña Viera - Multinet 2012.
 ¿Dudas, consultas?
 aacuna@multinet.cl
 @kyuumeitai (twitter)
@@ -14,6 +14,15 @@ aacuna@multinet.cl
 	 
  
 *********************************************************************************/
+//Setup
+$app_id = "241129952604057";
+$app_secret = "841b25852b262d4da0710bf9d46a3a6e";
+$access_token = "AAADbTnErb5kBABcosVGgA7wdj2Efs3fJF7MEZAIW2aSLlnZA49M49r6MeVZCTPCbBDtNEbtYo1NabiCBtcn092U8Ot6EO0ZD";
+$pageid = '226467530793812';
+$method = 'posts';
+
+include_once('tokenizer.php');
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -24,32 +33,10 @@ aacuna@multinet.cl
 		<script type="text/javascript" src="libraries/jquery-1.7.2.min.js"></script>
 		<script type="text/javascript" src="libraries/jquery.timeago.js"></script>		
 		<script type="text/javascript">
-<?php 
-/**************************************************************************** 
-
-Configuración: Si se desea eliminar un servicio, simplemente debe declararse vacío. 
-
-Hasta el momento hay 4 servicios configurados:
-	- twitter
-	- facebook
-	- flickr
-	- youtube
-
-Si se necesitara extender hay que crear un parser en:
-	libraries/calls.js, línea 14 
-	función compositor()
-para los distintos formatos.
-
-NOTA: 
-Los streams NO deben estar en JSONP sino en JSON (es decir, no atachar "callback=?")
-ya que para esto está el proxy (en proxy/caller.php)
-	
-*****************************************************************************/
-?>
 		/* <![CDATA[ */
 		var uris = {
-			twitter: "https://api.twitter.com/1/statuses/user_timeline.json?include_entities=true&include_rts=true&screen_name=postitCHL",
-			facebook: "https://graph.facebook.com/185425341488855/posts?access_token=241129952604057|Ph--6TL-LnvK_tpUvgso_FhJ9n0",
+			facebook: "https://graph.facebook.com/<?=$pageid;?>/<?=$method;?>?access_token=<? echo mnet_get_data($pageid, $method, $access_token, $app_id, $app_secret);?>",
+			twitter: "",
 			flickr: "",
 			youtube: ""
 		};
@@ -59,13 +46,13 @@ ya que para esto está el proxy (en proxy/caller.php)
 	</head>
 	<body>
 		<div id="social-buzz">
-			<ul id="social-buzz-header" class="clearfix"> 
+			<ul id="social-buzz-header" class="clearfix">
 				<li>Muéstrame:</li>
+				<li id="facebook-link"><a href="https://www.facebook.com/pages/Post-it-Chile/226467530793812" target="_blank" rel="facebook">Facebook</a></li>
 				<li id="twitter-link"><a href="http://twitter.com/postitCHL" target="_blank" rel="twitter">Twitter</a></li>
-				<li id="facebook-link"><a href="http://www.facebook.com/postitchile" target="_blank" rel="facebook">Facebook</a></li>
 				<li id="flickr-link"><a href="http://www.flickr.com/photos/postitproducts/" target="_blank" rel="flickr">Flickr</a></li>
 				<li id="youtube-link"><a href="http://www.youtube.com/user/postitnotes" target="_blank" rel="youtube">Youtube</a></li>
-				<li id="all-link"><a href="#" rel="all">Todos</a></li>			
+<!-- 				<li id="all-link"><a href="#" rel="all">Todos</a></li>			 -->
 			</ul>
 			<div class="feed clearfix">
 			
